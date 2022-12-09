@@ -1,0 +1,48 @@
+@mixin color-divs ($count, $baseName, $startcolor) {
+  $loop_color: $startcolor;
+  @for $i from 0 through $count {
+    $loop_color: darken($loop_color, 9%);
+    .#{$baseName}-#{$i} { background-color: $loop_color; }
+  }
+}
+
+.main {
+  width: 94%;
+  padding: 3%;
+  
+  .title {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, auto);
+
+    @include color-divs(24, 'day', #ffd8b1);
+
+    .grid-item {
+      min-height: 250px;
+      
+      &:not(.disabled) {
+        cursor: pointer;
+      }
+
+      &.disabled {
+        background-color: rgba(black, .25);
+        cursor: not-allowed;
+      }
+      
+      p {
+        margin: 0;
+        height: 100%;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,8 @@
+<section class="main">
+  <h1 class="title">Advent of Code 2022</h1>
+  <div class="grid">
+    <div class="grid-item day-{{index}}" [ngClass]="{ 'disabled': !day.active }" *ngFor="let day of days; let index = index" routerLink="exercise/{{day.day}}" ro>
+      <p>{{day.day}}</p>
+    </div>
+  </div>
+</section>
